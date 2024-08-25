@@ -11,7 +11,16 @@
   </head>
   <body>
     <div class="container mt-5">
-      <h1>JSON Input</h1>
+      <h1>Welcome to the Bajaj BFHL Project</h1>
+
+      <p>
+        Check out the project on GitHub:
+        <a href="https://github.com/Dharansh-Neema/bajaj-bfhl" target="_blank"
+          >GitHub Repository</a
+        >
+      </p>
+
+      <h2>JSON Input</h2>
       <form action="/frontend/submit" method="POST">
         <div class="mb-3">
           <label for="jsonInput" class="form-label">Enter JSON</label>
@@ -22,9 +31,11 @@
             rows="3"
           ></textarea>
         </div>
+
         <% if (error) { %>
         <div class="alert alert-danger"><%= error %></div>
         <% } %>
+
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>

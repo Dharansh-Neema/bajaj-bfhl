@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Response Data</h1>
+      <form id="responseForm">
+        <div class="mb-3">
+          <label for="options" class="form-label">Select Data to Display</label>
+          <select multiple class="form-control" id="options" name="options">
+            <option value="alphabets">Alphabets</option>
+            <option value="numbers">Numbers</option>
+            <option value="highest_lowercase_alphabet">
+              Highest Lowercase Alphabet
+            </option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="filterData()">
+          Show Data
+        </button>
+      </form>
+
+      <div id="displayArea" class="mt-4">
+        <!-- Data will be displayed here based on selected options -->
+      </div>
+    </div>
+
+    <script>
+      const data = <%-JSON.stringify(data)%>
+      function filterData() {
+        const selectedOptions = Array.from(
+          document.getElementById("options").selectedOptions
+        ).map((option) => option.value);
+        let displayHtml = "";
+
+        selectedOptions.forEach((option) => {
+          displayHtml += `<h4>${option.replace(
+            "_",
+            " "
+          )}</h4><pre>${JSON.stringify(data[option], null, 2)}</pre>`;
+        });
+
+        document.getElementById("displayArea").innerHTML = displayHtml;
+      }
+    </script>
+  </body>
+</html>
